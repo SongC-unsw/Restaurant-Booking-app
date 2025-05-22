@@ -43,11 +43,14 @@ export default function Navbar() {
         <NavigationMenu className="mx-6">
           <NavigationMenuList>
             <NavigationMenuItem>
-              <Link to="/">
-                <NavigationMenuLink className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground">
+              <NavigationMenuLink asChild>
+                <Link
+                  to="/"
+                  className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground"
+                >
                   Home
-                </NavigationMenuLink>
-              </Link>
+                </Link>
+              </NavigationMenuLink>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
@@ -55,16 +58,19 @@ export default function Navbar() {
               <NavigationMenuContent>
                 <div className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                   {exploreItems.map((item) => (
-                    <Link key={item.href} to={item.href}>
-                      <NavigationMenuLink className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                    <NavigationMenuLink asChild key={item.href}>
+                      <Link
+                        to={item.href}
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                      >
                         <div className="text-sm font-medium leading-none">
                           {item.title}
                         </div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           {item.description}
                         </p>
-                      </NavigationMenuLink>
-                    </Link>
+                      </Link>
+                    </NavigationMenuLink>
                   ))}
                 </div>
               </NavigationMenuContent>

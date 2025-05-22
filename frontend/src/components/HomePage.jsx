@@ -5,7 +5,7 @@ import izakayaImage from "/izakaya.png";
 import ramenImage from "/ramen.png";
 import familyImage from "/family.png";
 import shabushabuImage from "/shabushabu.png";
-
+import SearchBar from "./SearchBar";
 export default function HomePage() {
   const OPTIONS = {
     align: "start",
@@ -52,6 +52,7 @@ export default function HomePage() {
     <div>
       <Navbar />
       <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+      <SearchBar />
     </div>
   );
 }

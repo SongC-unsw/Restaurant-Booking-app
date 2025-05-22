@@ -102,3 +102,296 @@
 ## 联系方式
 
 如果您对项目或里程碑计划有任何疑问，请在 GitHub Issues 中提出。
+
+## Backend
+
+我来为您推荐一些适合餐厅预订系统后端的技术方案。
+
+对于餐厅预订系统的后端，我建议以下架构和服务：
+
+1. **主要技术栈选择**：
+
+   - Node.js + Express.js/NestJS 作为后端框架
+     - Express.js 简单轻量，适合快速开发
+     - NestJS 提供更严格的架构规范，适合大型项目
+   - 数据库：
+     - PostgreSQL：关系型数据库，适合处理预订关系和用户数据
+     - Redis：用于缓存和处理实时座位预订状态
+
+2. **核心功能模块**：
+
+```
+后端架构示例：
+/backend
+  /src
+    /controllers
+      - reservation.controller.ts    // 处理预订相关请求
+      - restaurant.controller.ts     // 餐厅信息管理
+      - user.controller.ts          // 用户管理
+    /services
+      - reservation.service.ts      // 预订业务逻辑
+      - notification.service.ts     // 通知服务
+    /models
+      - reservation.model.ts        // 预订数据模型
+      - restaurant.model.ts         // 餐厅数据模型
+      - user.model.ts              // 用户数据模型
+```
+
+3. **必要的第三方服务集成**：
+
+   - 认证服务：
+     - JWT 用于用户认证
+     - OAuth 2.0 支持社交媒体登录
+   - 支付集成：
+     - Stripe 或 PayPal 处理在线支付
+   - 通知服务：
+     - SendGrid 或 Nodemailer 发送邮件通知
+     - Twilio 发送短信提醒
+   - 云服务：
+     - AWS/Google Cloud/Azure 用于部署
+     - S3/Cloud Storage 存储图片等静态资源
+
+4. **数据库设计关键表**：
+
+```sql
+-- 用户表
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    phone VARCHAR(20),
+    password_hash VARCHAR(255)
+);
+
+-- 餐厅表
+CREATE TABLE restaurants (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    address TEXT,
+    cuisine_type VARCHAR(100),
+    opening_hours JSONB,
+    total_seats INTEGER
+);
+
+-- 预订表
+CREATE TABLE reservations (
+    id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(id),
+    restaurant_id INTEGER REFERENCES restaurants(id),
+    reservation_time TIMESTAMP,
+    party_size INTEGER,
+    status VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+5. **关键 API 端点**：
+
+```
+POST /api/auth/login          // 用户登录
+POST /api/auth/register      // 用户注册
+GET /api/restaurants        // 获取餐厅列表
+GET /api/restaurants/:id    // 获取特定餐厅详情
+POST /api/reservations     // 创建预订
+GET /api/reservations/:id  // 获取预订详情
+PUT /api/reservations/:id  // 更新预订
+```
+
+6. **安全考虑**：
+
+   - 实现 rate limiting 防止 API 滥用
+   - 使用 HTTPS 加密传输
+   - 实现数据验证和清洁
+   - 使用环境变量管理敏感信息
+   - 实现 CORS 策略
+
+7. **扩展性考虑**：
+   - 使用消息队列（如 RabbitMQ）处理异步任务
+   - 实现缓存层优化性能
+   - 考虑使用微服务架构便于后期扩展
+   - 实现日志系统便于监控和调试
+
+建议从小规模开始，先实现核心功能，然后根据实际需求逐步扩展。可以先使用 Express.js + PostgreSQL 搭建基础架构，实现基本的预订流程，后续再根据需求添加更多功能和优化性能。
+
+# 餐厅预订系统 (Restaurant Reservation System) - 里程碑计划
+
+## 项目简介
+
+这是一个使用 React.js + Firebase 构建的现代化餐厅预订系统，支持加密货币支付功能。本项目采用里程碑式的开发方法，将开发过程分解为多个阶段。
+
+## 技术栈
+
+- 前端: React.js
+- 后端: Firebase
+- 数据库: Cloud Firestore
+- 认证: Firebase Authentication
+- 存储: Firebase Storage
+- 支付: Web3.js + MetaMask
+
+## 里程碑
+
+### 里程碑 1: Firebase 项目设置与基础架构
+
+**目标:** 搭建项目基础结构，配置 Firebase 服务。
+
+- **任务:**
+  - 创建 Firebase 项目并配置
+  - 设置 Firestore 数据库结构
+  - 配置 Firebase Authentication
+  - 设置 Firebase Storage
+  - 实现基础路由系统
+  - 配置环境变量
+
+### 里程碑 2: 用户认证系统
+
+**目标:** 实现完整的用户认证流程。
+
+- **任务:**
+  - 实现邮箱/密码注册
+  - 实现 Google/Facebook OAuth 登录
+  - 用户个人资料管理
+  - 认证状态持久化
+  - 实现权限控制系统（用户/餐厅管理员）
+
+### 里程碑 3: 餐厅管理系统
+
+**目标:** 实现餐厅信息管理和预订系统核心功能。
+
+- **任务:**
+  - 餐厅信息 CRUD 操作
+  - 餐桌管理系统
+  - 营业时间管理
+  - 餐厅图片上传（Firebase Storage）
+  - 实时座位状态更新
+  - 预订时段管理
+
+### 里程碑 4: 预订系统
+
+**目标:** 实现预订流程和实时更新。
+
+- **任务:**
+  - 实现预订创建流程
+  - 实时预订状态更新
+  - 预订确认/取消系统
+  - 自动座位分配算法
+  - 预订提醒系统（Firebase Cloud Messaging）
+  - 预订历史记录
+
+### 里程碑 5: 加密货币支付集成
+
+**目标:** 实现加密货币支付系统。
+
+- **任务:**
+  - 集成 Web3.js
+  - MetaMask 钱包连接
+  - 智能合约开发（预订押金/支付）
+  - 多币种支付支持（ETH/USDT 等）
+  - 交易历史记录
+  - 支付状态实时更新
+  - 退款机制实现
+
+### 里程碑 6: 高级功能与优化
+
+**目标:** 添加高级功能并优化性能。
+
+- **任务:**
+  - 实现实时通知系统
+  - 添加评价和评论系统
+  - 实现餐厅推荐算法
+  - 性能优化和缓存策略
+  - 离线支持（Firebase offline persistence）
+  - 分析和监控（Firebase Analytics）
+
+### 里程碑 7: 安全与部署
+
+**目标:** 确保系统安全性并部署上线。
+
+- **任务:**
+  - 配置 Firestore 安全规则
+  - 实现速率限制
+  - 数据验证和清理
+  - 智能合约安全审计
+  - 部署到生产环境
+  - 监控系统设置
+
+## Firebase 数据结构
+
+```javascript
+// Firestore 集合结构
+{
+  users: {
+    userId: {
+      name: string,
+      email: string,
+      phone: string,
+      walletAddress: string,
+      createdAt: timestamp
+    }
+  },
+  restaurants: {
+    restaurantId: {
+      name: string,
+      address: string,
+      cuisine: string,
+      images: array,
+      tables: array,
+      openingHours: map,
+      acceptedCryptoCurrencies: array
+    }
+  },
+  reservations: {
+    reservationId: {
+      userId: string,
+      restaurantId: string,
+      datetime: timestamp,
+      guests: number,
+      status: string,
+      paymentStatus: string,
+      transactionHash: string
+    }
+  },
+  payments: {
+    paymentId: {
+      reservationId: string,
+      amount: number,
+      currency: string,
+      status: string,
+      transactionHash: string,
+      timestamp: timestamp
+    }
+  }
+}
+```
+
+## 智能合约功能
+
+- 预订押金支付
+- 自动退款机制
+- 多币种支持
+- 交易记录存储
+- 紧急取消机制
+
+## 如何贡献
+
+1. Fork 项目
+2. 创建功能分支
+3. 提交更改
+4. 推送到分支
+5. 创建 Pull Request
+
+## 开发环境设置
+
+```bash
+# 安装依赖
+npm install
+
+# 配置环境变量
+cp .env.example .env
+
+# 启动开发服务器
+npm run dev
+```
+
+## 联系方式
+
+如果您对项目有任何疑问，请在 GitHub Issues 中提出。

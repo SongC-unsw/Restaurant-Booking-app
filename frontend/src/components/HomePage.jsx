@@ -11,7 +11,6 @@ export default function HomePage() {
     align: "start",
     loop: true,
   };
-  const SLIDE_COUNT = 5;
   const SLIDES = [
     {
       id: 1,

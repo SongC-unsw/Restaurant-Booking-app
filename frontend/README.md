@@ -1,12 +1,104 @@
-# React + Vite
+# 食物配送应用 (Food Delivery App) - 里程碑计划
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 项目简介
 
-Currently, two official plugins are available:
+这是一个使用 React.js 构建的完整的食物配送应用。本项目采用里程碑式的开发方法，将整个开发过程分解为多个阶段，以便更好地管理进度和协作。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 里程碑
 
-## Expanding the ESLint configuration
+### 里程碑 1: 项目基础搭建与核心 UI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**目标:** 搭建项目基础结构，实现主要页面的静态 UI，并建立基本的路由导航。
+
+- **已完成:**
+  - 使用 Create React App 或 Vite 初始化项目。
+  - 配置项目结构和开发环境。
+  - 实现首页 (Home Page) 的静态布局。
+  - 实现食物详情页面 (Food Detail Page) 的静态布局。
+  - 实现购物车页面 (Cart Page) 的静态布局。
+  - 配置 React Router，实现页面之间的基本导航。
+  - 集成基本的样式方案 (例如 CSS Modules 或 Tailwind CSS)。
+- **待完成:**
+  - 完善各页面的响应式布局。
+  - 添加占位符数据用于 UI 展示。
+
+### 里程碑 2: 数据管理与食物列表
+
+**目标:** 实现食物数据的获取和展示，并建立基本的状态管理来存储食物列表。
+
+- **已完成:**
+  - 定义食物数据结构。
+  - 模拟或连接后端 API 获取食物列表数据。
+  - 在首页展示食物列表。
+  - 实现食物列表的过滤和排序功能 (如果计划)。
+  - 建立基本的状态管理来存储食物列表数据。
+- **待完成:**
+  - 处理数据加载中的状态和错误处理。
+  - 实现食物搜索功能。
+
+### 里程碑 3: 购物车功能
+
+**目标:** 实现完整的购物车功能，包括添加、删除和更新商品数量。
+
+- **已完成:**
+  - 建立购物车状态管理 (使用 Context API 或 Redux)。
+  - 实现将食物添加到购物车的功能。
+  - 在购物车页面展示购物车中的商品。
+  - 计算购物车中商品的总价。
+- **待完成:**
+  - 实现更新购物车中商品数量的功能。
+  - 实现从购物车中删除商品的功能。
+  - 购物车数据的持久化 (例如使用 Local Storage)。
+
+### 里程碑 4: 用户认证与授权
+
+**目标:** 实现用户注册、登录和退出功能，并保护需要登录才能访问的页面。
+
+- **已完成:**
+  - 设计用户数据结构。
+  - 实现用户注册表单和逻辑。
+  - 实现用户登录表单和逻辑。
+  - 建立用户认证状态管理。
+- **待完成:**
+  - 与后端 API 集成用户认证。
+  - 实现用户退出功能。
+  - 使用路由守卫保护需要登录才能访问的页面 (例如订单页面)。
+
+### 里程碑 5: 订单创建与管理
+
+**目标:** 实现用户下单功能，并将订单数据发送到后端，并展示用户的订单历史。
+
+- **已完成:**
+  - 设计订单数据结构。
+  - 实现下单流程 (例如从购物车页面跳转到订单确认页面)。
+  - 将订单数据发送到后端 API。
+- **待完成:**
+  - 在订单详情页面展示订单信息。
+  - 实现查看用户订单历史的功能。
+  - (如果计划) 集成支付网关。
+
+### 里程碑 6: 优化与部署
+
+**目标:** 对应用进行性能优化，完善用户体验，并进行部署。
+
+- **已完成:**
+  - 代码重构和优化。
+  - 性能优化 (例如代码分割、懒加载)。
+  - 错误处理和日志记录。
+- **待完成:**
+  - 编写单元测试和集成测试。
+  - 完善用户界面和交互细节。
+  - 准备生产环境构建。
+  - 部署应用到服务器 (例如 Netlify, Vercel, Heroku 等)。
+
+## 当前进度
+
+我们目前正在进行 **里程碑 [当前里程碑编号]** 的开发。请查看项目的 Issues 和 Pull Requests 以获取更详细的进度信息。
+
+## 如何贡献
+
+如果您想为某个里程碑做出贡献，请先查看该里程碑下的“待完成”任务，并在 Issues 中提出您的意向或直接提交 Pull Request。请参考 [CONTRIBUTING.md (如果存在)] 文件获取更详细的贡献指南。
+
+## 联系方式
+
+如果您对项目或里程碑计划有任何疑问，请在 GitHub Issues 中提出。

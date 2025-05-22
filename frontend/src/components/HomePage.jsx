@@ -49,6 +49,29 @@ export default function HomePage() {
       link: "/shabushabu",
     },
   ];
+  const RESTAURANTS = [
+    {
+      id: 1,
+      name: "Sushi Name",
+      image: sushiImage,
+      description:
+        "This is a description of the restaurant. It can be a few sentences",
+    },
+    {
+      id: 2,
+      name: "Family Name",
+      image: familyImage,
+      description:
+        "This is a description of the restaurant. It can be a few sentences",
+    },
+    {
+      id: 3,
+      name: "Izakaya Name",
+      image: izakayaImage,
+      description:
+        "This is a description of the restaurant. It can be a few sentences",
+    },
+  ];
   return (
     <div>
       <Navbar />
@@ -57,6 +80,19 @@ export default function HomePage() {
       <div className="recommendations container mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold left-0">Recommendations</h1>
         <Separator className="my-4" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {RESTAURANTS.map((restaurant) => (
+            <div className="bg-white p-4 rounded-lg shadow-md hover:scale-105 transition-all duration-300">
+              <img
+                src={restaurant.image}
+                alt={restaurant.name}
+                className="w-full h-auto object-cover rounded-md"
+              />
+              <h2 className="text-lg font-bold">{restaurant.name}</h2>
+              <p className="text-gray-600">{restaurant.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

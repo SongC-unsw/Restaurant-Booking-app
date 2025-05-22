@@ -6,6 +6,7 @@ import ramenImage from "/ramen.png";
 import familyImage from "/family.png";
 import shabushabuImage from "/shabushabu.png";
 import SearchBar from "./SearchBar";
+import { Separator } from "./ui/separator";
 export default function HomePage() {
   const OPTIONS = {
     align: "start",
@@ -53,6 +54,10 @@ export default function HomePage() {
       <Navbar />
       <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       <SearchBar />
+      <div className="recommendations container mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold left-0">Recommendations</h1>
+        <Separator className="my-4" />
+      </div>
     </div>
   );
 }

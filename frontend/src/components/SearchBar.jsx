@@ -30,7 +30,7 @@ export default function SearchBar({ handleSearch }) {
             placeholder="Search for a restaurant"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full h-10 px-3 rounded-md border"
+            className="w-full h-12 px-3 rounded-md border"
           />
         </div>
         <div className="flex-1">
@@ -39,7 +39,7 @@ export default function SearchBar({ handleSearch }) {
             placeholder="Location"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full h-10 px-3 rounded-md border"
+            className="w-full h-12 px-3 rounded-md border"
           />
         </div>
         <DatePicker selected={date} setDate={setDate} />

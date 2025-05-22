@@ -28,6 +28,7 @@ export default function GuestNumber({ guests, setGuests }) {
         size="icon"
         onClick={decrementGuests}
         disabled={guests <= 1}
+        className="h-12"
       >
         -
       </Button>
@@ -35,7 +36,7 @@ export default function GuestNumber({ guests, setGuests }) {
         type="number"
         value={guests}
         onChange={handleInputChange}
-        className="w-20 text-center"
+        className="w-20 h-12 text-center"
         min={1}
         max={20}
       />
@@ -44,6 +45,7 @@ export default function GuestNumber({ guests, setGuests }) {
         size="icon"
         onClick={incrementGuests}
         disabled={guests >= 20}
+        className="h-12"
       >
         +
       </Button>

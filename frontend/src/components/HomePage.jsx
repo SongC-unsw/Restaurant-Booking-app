@@ -7,6 +7,7 @@ import familyImage from "/family.png";
 import shabushabuImage from "/shabushabu.png";
 import SearchBar from "./SearchBar";
 import { Separator } from "./ui/separator";
+import Footer from "./Footer";
 export default function HomePage() {
   const OPTIONS = {
     align: "start",
@@ -82,7 +83,7 @@ export default function HomePage() {
         <Separator className="my-4" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {RESTAURANTS.map((restaurant) => (
-            <div className="bg-white p-4 rounded-lg shadow-md hover:scale-105 transition-all duration-300">
+            <div className="bg-white p-4 rounded-lg shadow-md hover:scale-105 transition-all duration-300 cursor-pointer">
               <img
                 src={restaurant.image}
                 alt={restaurant.name}
@@ -94,6 +95,7 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

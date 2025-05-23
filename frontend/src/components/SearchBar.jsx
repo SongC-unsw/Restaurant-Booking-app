@@ -46,7 +46,7 @@ export default function SearchBar({ handleSearch }) {
         <GuestNumber guests={guests} setGuests={setGuests} />
         <button
           type="submit"
-          className="bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90"
+          className="bg-primary text-white px-6 py-2 rounded-md hover:bg-primary/90 h-12"
         >
           Search
         </button>
